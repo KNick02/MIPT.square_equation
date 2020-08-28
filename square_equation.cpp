@@ -12,13 +12,11 @@
 //-----------------------------------------------------------------------------
 
 
-int print_intro()
+void print_intro()
     {
     printf("Square equation solver\n");
 
     printf("Enter coefficients: ");
-
-    return 0;
     }
 
 
@@ -27,7 +25,7 @@ int print_intro()
 //-----------------------------------------------------------------------------
 
 
-int print_answer(double x1, double x2, int number_roots)
+void print_answer(double x1, double x2, int number_roots)
     {
     printf("Answer: ");
 
@@ -50,8 +48,6 @@ int print_answer(double x1, double x2, int number_roots)
         }
 
     printf("\n");
-
-    return 0;
     }
 
 
@@ -83,7 +79,7 @@ int checkZero(double y)
 //-----------------------------------------------------------------------------
 
 
-int lin_eq(double e, double f, double* x1, int* number_roots)
+void lin_eq(double e, double f, double* x1, int* number_roots)
     {
     assert(x1 != NULL);
     assert(number_roots != NULL);
@@ -105,7 +101,6 @@ int lin_eq(double e, double f, double* x1, int* number_roots)
         else
             *number_roots = INF_ROOTS;
         }
-    return 0;
     }
 
 
@@ -121,7 +116,7 @@ int lin_eq(double e, double f, double* x1, int* number_roots)
 //-----------------------------------------------------------------------------
 
 
-int find_roots(double a, double b, double c, double* x1, double* x2, int* number_roots)
+void find_roots(double a, double b, double c, double* x1, double* x2, int* number_roots)
     {
     assert(x1 != NULL);
     assert(x2 != NULL);
@@ -156,8 +151,6 @@ int find_roots(double a, double b, double c, double* x1, double* x2, int* number
 
     else
         lin_eq(b, c, x1, number_roots);
-
-    return 0;
     }
 
 
