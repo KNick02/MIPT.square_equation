@@ -44,7 +44,6 @@ void print_answer(double x1, double x2, int number_roots)
                          break;
 
         case ERROR:      printf("ERROR");
-                         return 1;
         }
 
     printf("\n");
