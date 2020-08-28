@@ -5,7 +5,7 @@
 
 #define INF_ROOTS 3
 #define ZERO 1.0E-20
-
+#define ERROR -1
 
 //-----------------------------------------------------------------------------
 //! Prints a greeting for the user
@@ -33,20 +33,20 @@ int print_answer(double x1, double x2, int number_roots)
 
     switch(number_roots)
         {
-        case 3:  printf("(-inf;+inf)");
-                 break;
+        case INF_ROOTS:  printf("(-inf;+inf)");
+                         break;
 
-        case 2:  printf("%lg and %lg", x1, x2);
-                 break;
+        case 2:          printf("%lg and %lg", x1, x2);
+                         break;
 
-        case 1:  printf("%lg", x1);
-                 break;
+        case 1:          printf("%lg", x1);
+                         break;
 
-        case 0:  printf("No roots");
-                 break;
+        case 0:          printf("No roots");
+                         break;
 
-        case -1: printf("ERROR");
-                 return 1;
+        case ERROR:      printf("ERROR");
+                         return 1;
         }
 
     printf("\n");
@@ -166,7 +166,7 @@ int main()
     print_intro();
 
     double a = 0, b = 0, c = 0;
-    int check_input;
+    int check_input = 0;
 
     while ((check_input = scanf("%lg %lg %lg", &a, &b, &c)) != 3)
         {
