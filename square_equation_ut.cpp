@@ -191,7 +191,7 @@ void test_isZero()
     {
     double enter[4] = {-1, 1e-21, 1e-20, 1};
     int must_return[4] = {0, 1, 1, 0};
-    int i = 0;
+    int i;
 
     for (i = 0; i < 4; i++)
         {
