@@ -5,16 +5,64 @@
 
 #define INF_ROOTS 3
 #define ZERO 1.0E-20
-#define DEFAULT -1
+#define NOTCHANGED -1
 
+
+
+//-----------------------------------------------------------------------------
+//! Prints a greeting for the user
+//-----------------------------------------------------------------------------
 
 void print_intro();
+
+
+//-----------------------------------------------------------------------------
+//! Prints an answer
+//-----------------------------------------------------------------------------
+
 void print_answer(double x1, double x2, int number_roots);
+
+
+//-----------------------------------------------------------------------------
+//! Checks if a number is equal to zero with less precision
+//!
+//! @param [in]   y   number value
+//!
+//! @return  Returns 1 if the number is equal to zero and 0 if it is not
+//-----------------------------------------------------------------------------
+
 int isZero(double y);
+
+
+//-----------------------------------------------------------------------------
+//! Solves a linear equation ex + f = 0
+//! @param [in]      e             first coefficient
+//! @param [in]      f             second coefficient
+//! @param [out]     x1            root value
+//! @param [out]     number_roots  number of roots
+//-----------------------------------------------------------------------------
+
 void lin_eq(double e, double f, double* x1, int* number_roots);
+
+
+//-----------------------------------------------------------------------------
+//! Solves a square equation ax**2 + bx + c = 0
+//!
+//! @param [in]      a             a-coefficient
+//! @param [in]      b             b-coefficient
+//! @param [in]      c             c-coefficient
+//! @param [out]     x1            first root value
+//! @param [out]     x2            second root value
+//! @param [out]     number_roots  number of roots
+//-----------------------------------------------------------------------------
+
 void find_roots(double a, double b, double c, double* x1, double* x2, int* number_roots);
+
+
 void test_isZero();
+
 void test_lin_eq();
+
 void test_find_roots();
 
 
@@ -35,7 +83,7 @@ int main()
         }
 
     double x1 = 0, x2 = 0;
-    int number_roots = DEFAULT;
+    int number_roots = NOTCHANGED;
 
     find_roots(a, b, c, &x1, &x2, &number_roots);
 
@@ -45,10 +93,6 @@ int main()
     }
 
 
-//-----------------------------------------------------------------------------
-//! Prints a greeting for the user
-//-----------------------------------------------------------------------------
-
 
 void print_intro()
     {
@@ -56,11 +100,6 @@ void print_intro()
 
     printf("Enter coefficients: ");
     }
-
-
-//-----------------------------------------------------------------------------
-//! Prints an answer
-//-----------------------------------------------------------------------------
 
 
 void print_answer(double x1, double x2, int number_roots)
@@ -88,28 +127,10 @@ void print_answer(double x1, double x2, int number_roots)
     }
 
 
-//-----------------------------------------------------------------------------
-//! Checks if a number is equal to zero with less precision
-//!
-//! @param [in]   y   number value
-//!
-//! @return  Returns 1 if the number is equal to zero and 0 if it is not
-//-----------------------------------------------------------------------------
-
-
 int isZero(double y)
     {
     return (fabs(y) <= ZERO);
     }
-
-
-//-----------------------------------------------------------------------------
-//! Solves a linear equation ex + f = 0
-//! @param [in]      e             first coefficient
-//! @param [in]      f             second coefficient
-//! @param [out]     x1            root value
-//! @param [out]     number_roots  number of roots
-//-----------------------------------------------------------------------------
 
 
 void lin_eq(double e, double f, double* x1, int* number_roots)
@@ -135,18 +156,6 @@ void lin_eq(double e, double f, double* x1, int* number_roots)
             *number_roots = INF_ROOTS;
         }
     }
-
-
-//-----------------------------------------------------------------------------
-//! Solves a square equation ax**2 + bx + c = 0
-//!
-//! @param [in]      a             a-coefficient
-//! @param [in]      b             b-coefficient
-//! @param [in]      c             c-coefficient
-//! @param [out]     x1            first root value
-//! @param [out]     x2            second root value
-//! @param [out]     number_roots  number of roots
-//-----------------------------------------------------------------------------
 
 
 void find_roots(double a, double b, double c, double* x1, double* x2, int* number_roots)
@@ -209,14 +218,14 @@ void test_lin_eq()
     double enter_e[3] = {-1, 0, 0};
     double enter_f[3] = {2, 3, 0};
 
-    double must_x1[3] = {2, DEFAULT, DEFAULT};
+    double must_x1[3] = {2, NOTCHANGED, NOTCHANGED};
     int must_n_roots[3] = {1, 0, INF_ROOTS};
 
     int number_roots, i; double x1;
 
     for (i = 0; i < 3; i++)
         {
-        x1 = number_roots = DEFAULT;
+        x1 = number_roots = NOTCHANGED;
 
         lin_eq(enter_e[i], enter_f[i], &x1, &number_roots);
 
@@ -235,15 +244,15 @@ void test_find_roots()
     double enter_b[6] = {3, -12, 1, 2, 0, 0};
     double enter_c[6] = {2, 12, 4, -6, 7, 0};
 
-    double must_x1[6] = {-1, 2, DEFAULT, 3, DEFAULT, DEFAULT};
-    double must_x2[6] = {-2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT};
+    double must_x1[6] = {-1, 2, NOTCHANGED, 3, NOTCHANGED, NOTCHANGED};
+    double must_x2[6] = {-2, NOTCHANGED, NOTCHANGED, NOTCHANGED, NOTCHANGED, NOTCHANGED};
     int must_n_roots[6] = {2, 1, 0, 1, 0, INF_ROOTS};
 
     int number_roots, i; double x1, x2;
 
     for (i = 0; i < 6; i++)
         {
-        x1 = x2 = number_roots = DEFAULT;
+        x1 = x2 = number_roots = NOTCHANGED;
 
         find_roots(enter_a[i], enter_b[i], enter_c[i], &x1, &x2, &number_roots);
 
