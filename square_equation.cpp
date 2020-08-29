@@ -5,7 +5,6 @@
 
 #define INF_ROOTS 3
 #define ZERO 1.0E-20
-#define ERROR -1
 
 //-----------------------------------------------------------------------------
 //! Prints a greeting for the user
@@ -43,7 +42,7 @@ void print_answer(double x1, double x2, int number_roots)
         case 0:          printf("No roots");
                          break;
 
-        case ERROR:      printf("ERROR");
+        default:         printf("ERROR");
         }
 
     printf("\n");
@@ -59,7 +58,7 @@ void print_answer(double x1, double x2, int number_roots)
 //-----------------------------------------------------------------------------
 
 
-int checkZero(double y)
+int isZero(double y)
     {
     if ((y > ZERO) || (y < -ZERO))
         return 0;
@@ -86,7 +85,7 @@ void lin_eq(double e, double f, double* x1, int* number_roots)
     assert(isfinite(e));
     assert(isfinite(f));
 
-    if (checkZero(e) == 0)
+    if (isZero(e) == 0)
         {
         *x1 = -f / e;
         *number_roots = 1;
@@ -94,7 +93,7 @@ void lin_eq(double e, double f, double* x1, int* number_roots)
 
     else
         {
-        if (checkZero(f) == 0)
+        if (isZero(f) == 0)
             *number_roots = 0;
 
         else
@@ -127,7 +126,7 @@ void find_roots(double a, double b, double c, double* x1, double* x2, int* numbe
 
     double d = 0;
 
-    if (checkZero(a) == 0)
+    if (isZero(a) == 0)
         {
         d = b*b - 4*a*c;
 
@@ -158,9 +157,8 @@ int main()
     print_intro();
 
     double a = 0, b = 0, c = 0;
-    int check_input = 0;
 
-    while ((check_input = scanf("%lg %lg %lg", &a, &b, &c)) != 3)
+    while ((scanf("%lg %lg %lg", &a, &b, &c)) != 3)
         {
         printf("Try again (a, b and c must be numbers): ");
         fflush(stdin);
