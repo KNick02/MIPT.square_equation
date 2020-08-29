@@ -5,8 +5,6 @@
 
 #define INF_ROOTS 3
 #define ZERO 1.0E-20
-#define NOTCHANGED -1
-
 
 
 //-----------------------------------------------------------------------------
@@ -40,6 +38,9 @@ int isZero(double y);
 //! @param [in]      f             second coefficient
 //! @param [out]     x1            root value
 //! @param [out]     number_roots  number of roots
+//! 
+//! @note  In case of no roots or infinity of roots the function does not change
+//! x1 value. 
 //-----------------------------------------------------------------------------
 
 void lin_eq(double e, double f, double* x1, int* number_roots);
@@ -54,6 +55,9 @@ void lin_eq(double e, double f, double* x1, int* number_roots);
 //! @param [out]     x1            first root value
 //! @param [out]     x2            second root value
 //! @param [out]     number_roots  number of roots
+//!
+//! @note  In case of no roots or infinity of roots the function does not 
+//! change x1 and x2 values, if there is only one root it does not change x2 value.
 //-----------------------------------------------------------------------------
 
 void find_roots(double a, double b, double c, double* x1, double* x2, int* number_roots);
@@ -218,14 +222,14 @@ void test_lin_eq()
     double enter_e[3] = {-1, 0, 0};
     double enter_f[3] = {2, 3, 0};
 
-    double must_x1[3] = {2, NOTCHANGED, NOTCHANGED};
+    double must_x1[3] = {2, 0, 0};
     int must_n_roots[3] = {1, 0, INF_ROOTS};
 
     int number_roots, i; double x1;
 
     for (i = 0; i < 3; i++)
         {
-        x1 = number_roots = NOTCHANGED;
+        x1 = number_roots = 0;
 
         lin_eq(enter_e[i], enter_f[i], &x1, &number_roots);
 
@@ -244,15 +248,15 @@ void test_find_roots()
     double enter_b[6] = {3, -12, 1, 2, 0, 0};
     double enter_c[6] = {2, 12, 4, -6, 7, 0};
 
-    double must_x1[6] = {-1, 2, NOTCHANGED, 3, NOTCHANGED, NOTCHANGED};
-    double must_x2[6] = {-2, NOTCHANGED, NOTCHANGED, NOTCHANGED, NOTCHANGED, NOTCHANGED};
+    double must_x1[6] = {-1, 2, 0, 3, 0, 0};
+    double must_x2[6] = {-2, 0, 0, 0, 0, 0};
     int must_n_roots[6] = {2, 1, 0, 1, 0, INF_ROOTS};
 
     int number_roots, i; double x1, x2;
 
     for (i = 0; i < 6; i++)
         {
-        x1 = x2 = number_roots = NOTCHANGED;
+        x1 = x2 = number_roots = 0;
 
         find_roots(enter_a[i], enter_b[i], enter_c[i], &x1, &x2, &number_roots);
 
