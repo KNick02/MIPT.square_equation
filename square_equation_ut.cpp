@@ -87,7 +87,7 @@ int main()
         }
 
     double x1 = 0, x2 = 0;
-    int number_roots = NOTCHANGED;
+    int number_roots = 0;
 
     find_roots(a, b, c, &x1, &x2, &number_roots);
 
