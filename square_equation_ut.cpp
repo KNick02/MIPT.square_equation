@@ -70,12 +70,7 @@ void test_lin_eq();
 void test_find_roots();
 
 
-int main()
-    {
-    test_isZero();
-    test_lin_eq();
-    test_find_roots();
-
+int main(){
     print_intro();
 
     double a = 0, b = 0, c = 0;
