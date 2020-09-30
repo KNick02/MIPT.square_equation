@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #define INF_ROOTS 3
-#define ZERO 1.0E-20
+#define ZERO 1.0E-5
 
 
 //-----------------------------------------------------------------------------
